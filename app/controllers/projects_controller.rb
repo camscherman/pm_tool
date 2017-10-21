@@ -19,7 +19,9 @@ class ProjectsController < ApplicationController
 
     def show
       @task = Task.new
+      @discussion = Discussion.new
       @tasks = @project.tasks.order(created_at: :desc)
+      @discussions= @project.discussions.order(created_at: :desc)
     end
 
     def edit
