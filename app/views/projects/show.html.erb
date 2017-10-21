@@ -1,4 +1,36 @@
 <h1><%= @project.title %></h1>
 <h3><%= @project.due_date %></h3>
-<%= link_to "Update", edit_project_path(@project) %>
-<%= link_to "Delete", project_path(@project), method: :delete, data:{confirm: "Are you sure?" } %>
+
+<%= form_for [@project, @task] do |f| %>
+<div class='form-group'>
+  <%= f.label :title %>
+  <%= f.text_field :title  %>
+</div>
+
+<div class="form-group">
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+</div>
+<%= f.submit %>
+<% end %>
+
+<% @tasks.each do |t| %>
+<div>
+  <h5>
+    <%= t.title %>
+  </h5>
+  <p>
+    <%= t.body %>
+    <p>
+      <h6>
+        <%= t.is_completed? %>
+
+        <%= link_to "Mark as #{(t.completed ? 'not completed.' : 'completed.')} "  , edit_task_path(t) %>
+      </span>
+
+    </h6>
+  </div>
+
+  <% end %>
+  <%= link_to "Update", edit_project_path(@project) %>
+  <%= link_to "Delete", project_path(@project), method: :delete, data:{confirm: "Are you sure?" } %>

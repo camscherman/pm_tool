@@ -14,10 +14,12 @@ class ProjectsController < ApplicationController
             redirect_to projects_path
         else
             render new_project_path
-        end   
+        end
     end
 
     def show
+      @task = Task.new
+      @tasks = @project.tasks.order(created_at: :desc)
     end
 
     def edit
@@ -40,4 +42,7 @@ class ProjectsController < ApplicationController
     def find_project
         @project = Project.find(params[:id])
     end
+
+
+
 end

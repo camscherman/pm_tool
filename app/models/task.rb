@@ -11,4 +11,12 @@ class Task < ApplicationRecord
     def default_settings
       self.completed ||= false
     end
+
+    def is_completed?
+      if completed == false
+        return "Not Completed"
+      else
+        return "Completed"
+      end
+    end
 end
