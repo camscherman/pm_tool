@@ -1,0 +1,9 @@
+<% @projects.each do |p| %>
+<hr/>
+<div>
+    Title:<%= link_to p.title, project_path(p) %>
+</div>
+<div>
+    Due:<%= p.due_date %>
+</div>
+<% end %>

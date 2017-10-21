@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Project.destroy_all
+
+100.times.each do
+    Project.create(title: Faker::MostInterestingManInTheWorld.quote, 
+    due_date: Faker::Date.birthday)
+    
+end
+
+puts Cowsay.say("#{Project.count} projects added.", :Stimpy)
