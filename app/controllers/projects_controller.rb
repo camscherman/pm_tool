@@ -19,8 +19,10 @@ class ProjectsController < ApplicationController
 
     def show
       @task = Task.new
+      @complete = Task.where("completed IS true")
+      @incomplete = Task.where("completed IS false")
       @discussion = Discussion.new
-      @tasks = @project.tasks.order(created_at: :desc)
+      
       @discussions= @project.discussions.order(created_at: :desc)
     end
 

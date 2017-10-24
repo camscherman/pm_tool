@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :find_task,  only:[:edit, :update]
-  before_action :find_project, only:[:update, :create]
+  before_action :find_project, only:[:update, :create, :edit]
   def edit
 
      update
@@ -38,7 +38,7 @@ class TasksController < ApplicationController
   end
 
   def find_project
-    @project = Project.find(params[:project_id])
+    @project = @task.project
   end
 
 end
